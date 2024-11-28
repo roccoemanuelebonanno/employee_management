@@ -1,0 +1,39 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: employee_management_development
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+
+test:
+  <<: *default
+  database: employee_management_test
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+
+production:
+  primary: &primary_production
+    <<: *default
+    database: employee_management_production
+    username: postgres
+    password: postgres
+    host: 127.0.0.1
+  cache:
+    <<: *primary_production
+    database: employee_management_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: employee_management_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: employee_management_production_cable
+    migrations_paths: db/cable_migrate
