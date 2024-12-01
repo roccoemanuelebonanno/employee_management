@@ -1,11 +1,8 @@
 source "https://rubygems.org"
 
-
 gem "rails", "~> 8.0.0"
 
-
 gem "pg", "~> 1.1"
-
 gem "puma", ">= 5.0"
 
 gem "bcrypt", "~> 3.1.7"
@@ -23,11 +20,14 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "kamal", require: false
 
-
 group :development, :test do
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "factory_bot_rails"
   gem "faker", require: false
+  gem "itax_code"
+  gem "pry"
+  gem "rspec-rails"
   gem "rubocop"
   gem "rubocop-rails", require: false
   gem "rubocop-rails-omakase", require: false
